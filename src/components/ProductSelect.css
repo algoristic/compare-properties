@@ -2,8 +2,16 @@
     border-bottom: 1px solid black;
     padding: .5rem 1rem;
 }
+.product-select-header {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
 .select-control {
+    margin-top: 2rem;
     margin-bottom: 1rem;
+}
+.select-control, .product-select-header {
+    text-align: center;
 }
 .select-list .selectable-product {
     border-bottom: 1px solid grey;

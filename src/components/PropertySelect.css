@@ -17,3 +17,7 @@
 .property-select .selectable-property {
     border-bottom: 1px solid grey;
 }
+.property-select-header {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}

@@ -9,6 +9,9 @@ const Property = ({ property, toggle }) => {
 const PropertySelect = ({ properties, toggle }) => {
     return (
         <div className='property-select'>
+            <div className='property-select-header'>
+                <h1>Select Properties</h1>
+            </div>
         {
             properties.filter(property => property.visible).map(property => <Property property={property} toggle={() => toggle(property)} />)
         }

@@ -1,6 +1,6 @@
 const Name = ({ product }) => {
     return (
-        <div className='product-name'>{ product.name }</div>
+        <h3 className='product-name'>{ product.name }</h3>
     );
 };
 
