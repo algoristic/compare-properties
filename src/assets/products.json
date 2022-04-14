@@ -1,0 +1,122 @@
+{
+    "products": [
+        {
+            "id": "Product_1",
+            "name": "Product 1",
+            "properties": [
+                {
+                    "id": "property_1",
+                    "value": 30
+                },
+                {
+                    "id": "property_2",
+                    "value": 62
+                },
+                {
+                    "id": "property_5",
+                    "value": 90
+                },
+                {
+                    "id": "property_6",
+                    "value": 48
+                }
+            ]
+        },
+        {
+            "id": "Product_2",
+            "name": "Product 2",
+            "properties": [
+                {
+                    "id": "property_1",
+                    "value": 42
+                },
+                {
+                    "id": "property_2",
+                    "value": 12
+                },
+                {
+                    "id": "property_3",
+                    "value": 73
+                }
+            ]
+        },
+        {
+            "id": "Product_3",
+            "name": "Product 3",
+            "properties": [
+                {
+                    "id": "property_2",
+                    "value": 38
+                },
+                {
+                    "id": "property_3",
+                    "value": 72
+                },
+                {
+                    "id": "property_4",
+                    "value": 65
+                },
+                {
+                    "id": "property_6",
+                    "value": 52
+                }
+            ]
+        },
+        {
+            "id": "Product_4",
+            "name": "Product 4",
+            "properties": [
+                {
+                    "id": "property_1",
+                    "value": 87
+                },
+                {
+                    "id": "property_2",
+                    "value": 42
+                },
+                {
+                    "id": "property_3",
+                    "value": 77
+                },
+                {
+                    "id": "property_4",
+                    "value": 21
+                },
+                {
+                    "id": "property_5",
+                    "value": 49
+                },
+                {
+                    "id": "property_6",
+                    "value": 24
+                }
+            ]
+        },
+        {
+            "id": "Product_5",
+            "name": "Product 5",
+            "properties": [
+                {
+                    "id": "property_1",
+                    "value": 93
+                },
+                {
+                    "id": "property_2",
+                    "value": 100
+                },
+                {
+                    "id": "property_4",
+                    "value": 59
+                },
+                {
+                    "id": "property_5",
+                    "value": 32
+                },
+                {
+                    "id": "property_6",
+                    "value": 4
+                }
+            ]
+        }
+    ]
+}
