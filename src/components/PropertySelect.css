@@ -1,0 +1,19 @@
+.property-select {
+    border: 1px solid black;
+    border-right: 0;
+    border-top: 0;
+    padding: .5rem 1rem;
+}
+.selectable-property {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    margin: 1rem 0;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+.selectable-property.property-selected {
+    background: lightgreen;
+}
+.property-select .selectable-property {
+    border-bottom: 1px solid grey;
+}

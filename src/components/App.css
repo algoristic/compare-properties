@@ -1,0 +1,7 @@
+.app .select-comparables {
+    display: flex;
+    justify-content: space-between;
+}
+.app .select-comparables>* {
+    flex-grow: 1;
+}

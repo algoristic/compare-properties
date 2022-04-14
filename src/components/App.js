@@ -1,8 +1,10 @@
 import { Component } from 'react'
 import ProductSelect from './ProductSelect'
 import ProductCompare from './ProductCompare'
+import PropertySelect from './PropertySelect'
 
-import all from '../assets/products.json'
+import allProducts from '../assets/products.json'
+import allProperties from '../assets/property.config.json'
 
 import './App.css';
 
@@ -10,17 +12,25 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: all.products.map(product => {
+            products: allProducts.products.map(product => {
                 product.selected = false;
                 return product;
             }),
-            compare: false
+            properties: Object.keys(allProperties.properties).map(id => {
+                const property = allProperties.properties[id];
+                property.id = id;
+                property.visible = false;
+                property.selected = true;
+                return property;
+            })
         };
-        this.toggle = this.toggle.bind(this);
-        this.toggleAll = this.toggleAll.bind(this);
+        this.toggleProduct = this.toggleProduct.bind(this);
+        this.toggleProperty = this.toggleProperty.bind(this);
+        this.toggleAllProducts = this.toggleAllProducts.bind(this);
+        this.updateProperties = this.updateProperties.bind(this);
     }
 
-    toggle(toggledProduct) {
+    toggleProduct(toggledProduct) {
         let { products } = this.state;
         products = products.map(product => {
             if(product.id === toggledProduct.id) {
@@ -28,23 +38,63 @@ class App extends Component {
             }
             return product;
         });
-        this.setState({ products: products });
+        this.setState({
+            products: products,
+            properties: this.updateProperties(products)
+        });
     }
 
-    toggleAll(state) {
+    toggleAllProducts(state) {
         let { products } = this.state;
         products = products.map(product => {
             product.selected = state;
             return product;
         });
-        this.setState({ products: products });
+        this.setState({
+            products: products,
+            properties: this.updateProperties(products)
+        });
+    }
+
+    toggleProperty(toggledProperty) {
+        let { properties } = this.state;
+        properties = properties.map(property => {
+            if(property.id === toggledProperty.id) {
+                property.selected = (!property.selected);
+            }
+            return property;
+        });
+        this.setState({ properties: properties });
+    }
+
+    updateProperties(products) {
+        const { properties } = this.state;
+        const collection = [];
+
+        products.filter(product => product.selected).forEach(product => {
+            product.properties.forEach(property => {
+                if(!collection.includes(property.id)) {
+                    collection.push(property.id);
+                }
+            });
+        });
+
+        for(let i = 0; i < properties.length; i++) {
+            const state = collection.includes(properties[i].id);
+            properties[i].visible = state;
+        }
+
+        return properties;
     }
 
     render() {
-        const { products, compare } = this.state;
+        const { products, properties } = this.state;
         return (
             <div className="app">
-                <ProductSelect products={products} toggle={this.toggle} toggleAll={this.toggleAll} />
+                <div className='select-comparables'>
+                    <ProductSelect products={products} toggle={this.toggleProduct} toggleAll={this.toggleAllProducts} />
+                    <PropertySelect properties={properties} toggle={this.toggleProperty} />
+                </div>
             </div>
         );
     }

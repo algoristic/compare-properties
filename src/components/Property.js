@@ -8,7 +8,6 @@ const Name = ({ property }) => {
 const Value = ({ property }) => {
     return property.value + properties[property.id].unit;
 }
-
 const Property = {
     Name: Name,
     Value: Value

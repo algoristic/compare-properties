@@ -1,6 +1,8 @@
 import Product from './Product'
 import SelectAllButton from './SelectAllButton'
 
+import './ProductSelect.css'
+
 const ProductSelect = ({ products, toggle, toggleAll }) => {
     return (
         <div className='product-select'>

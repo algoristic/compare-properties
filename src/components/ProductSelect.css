@@ -1,0 +1,10 @@
+.product-select {
+    border-bottom: 1px solid black;
+    padding: .5rem 1rem;
+}
+.select-control {
+    margin-bottom: 1rem;
+}
+.select-list .selectable-product {
+    border-bottom: 1px solid grey;
+}

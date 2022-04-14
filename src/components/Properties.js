@@ -1,5 +1,7 @@
 import Property from './Property'
 
+import './Properties.css'
+
 const ListProperty = ({ property }) => {
     return (
         <li className='list-property'>
