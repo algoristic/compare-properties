@@ -2,27 +2,33 @@
     "properties": {
         "property_1": {
             "name": "Zugkraft",
-            "unit": "nm"
+            "unit": "nm",
+            "weight": 1
         },
         "property_2": {
             "name": "Max. Falltiefe",
-            "unit": "m"
+            "unit": "m",
+            "weight": 1
         },
         "property_3": {
             "name": "Geschwindigkeit",
-            "unit": "km/h"
+            "unit": "km/h",
+            "weight": 1
         },
         "property_4": {
             "name": "Druckwiederstand",
-            "unit": "hPa"
+            "unit": "hPa",
+            "weight": 1
         },
         "property_5": {
             "name": "Max. Fläche",
-            "unit": "m²"
+            "unit": "m²",
+            "weight": 1
         },
         "property_6": {
             "name": "Aktivierungszeit",
-            "unit": "s"
+            "unit": "s",
+            "weight": 1
         }
     }
 }

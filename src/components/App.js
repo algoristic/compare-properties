@@ -28,6 +28,7 @@ class App extends Component {
         this.toggleProperty = this.toggleProperty.bind(this);
         this.toggleAllProducts = this.toggleAllProducts.bind(this);
         this.updateProperties = this.updateProperties.bind(this);
+        this.changePropertyWeight = this.changePropertyWeight.bind(this);
     }
 
     toggleProduct(toggledProduct) {
@@ -67,6 +68,17 @@ class App extends Component {
         this.setState({ properties: properties });
     }
 
+    changePropertyWeight(toggledProperty, value) {
+        let { properties } = this.state;
+        properties = properties.map(property => {
+            if(property.id === toggledProperty.id) {
+                property.weight = value;
+            }
+            return property;
+        });
+        this.setState({ properties: properties });
+    }
+
     updateProperties(products) {
         const { properties } = this.state;
         const collection = [];
@@ -93,8 +105,10 @@ class App extends Component {
             <div className="app">
                 <div className='select-comparables'>
                     <ProductSelect products={products} toggle={this.toggleProduct} toggleAll={this.toggleAllProducts} />
-                    <PropertySelect properties={properties} toggle={this.toggleProperty} />
+                    <PropertySelect properties={properties} toggle={this.toggleProperty} changeWeight={this.changePropertyWeight} />
                 </div>
+                <div className='divider' onClick={() => window.scrollTo(0, document.body.scrollHeight)}>⇓</div>
+                <ProductCompare products={products} properties={properties} />
             </div>
         );
     }

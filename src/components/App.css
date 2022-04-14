@@ -5,3 +5,8 @@
 .app .select-comparables>* {
     flex-grow: 1;
 }
+.divider {
+    text-align: center;
+    font-size: 5rem;
+    cursor: pointer;
+}

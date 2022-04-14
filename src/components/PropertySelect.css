@@ -4,10 +4,19 @@
     border-top: 0;
     padding: .5rem 1rem;
 }
-.selectable-property {
+.selectable-property,
+.selectable-property-header {
+    flex-grow: 100;
+}
+.selectable-property-header,
+.property-weight-header {
+    padding: .5rem 1rem;
+}
+.selectable-property,
+.property-weight {
     padding: .5rem 1rem;
     border-radius: .5rem;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem 1rem;
     background: #f5f5f5;
     cursor: pointer;
 }
@@ -20,4 +29,9 @@
 .property-select-header {
     margin-top: 1rem;
     margin-bottom: 2rem;
+    text-align: center;
+}
+.property-wrapper,
+.header-wrapper {
+    display: flex;
 }
