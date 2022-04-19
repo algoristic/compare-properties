@@ -1,9 +1,9 @@
 .panel {
-    border-bottom: 1px solid black;
-    padding: .5rem 1rem;
+    border-bottom: var(--border-width) solid var(--border-color-panel);
+    padding: var(--space-unit-reduced) var(--space-unit-default);
 }
 .panel .panel-header {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: var(--space-unit-default);
+    margin-bottom: calc(var(--space-unit-default) * 2);
     text-align: center;
 }

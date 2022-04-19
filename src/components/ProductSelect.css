@@ -1,11 +1,11 @@
 .select-control {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: calc(var(--space-unit-default) * 2);
+    margin-bottom: var(--space-unit-default);
 }
 .select-list .selectable-product {
-    border-bottom: 1px solid grey;
+    border-bottom: var(--border-width) solid var(--border-color-item);
 }
 .product-image img {
-    border-radius: .5rem;
-    border: 1px solid white;
+    border-radius: var(--space-unit-reduced);
+    border: var(--border-width) solid var(--border-color-item);
 }

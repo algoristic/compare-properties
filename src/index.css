@@ -1,3 +1,12 @@
+:root {
+    --background-default: #f5f5f5;
+    --background-selected: lightgreen;
+    --border-width: 1px;
+    --border-color-item: grey;
+    --border-color-panel: black;
+    --space-unit-default: 1rem;
+    --space-unit-reduced: calc(var(--space-unit-default) / 2);
+}
 html {
     scroll-behavior: smooth;
 }

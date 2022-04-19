@@ -1,8 +1,8 @@
 import './SelectItem.css'
 
-const SelectItem = ({ selected, onClick, children }) => {
+const SelectItem = ({ selected, onClick, style, children }) => {
     return (
-        <div className={`select-item ${selected ? 'selected' : ''}`} onClick={onClick}>
+        <div style={style} className={`select-item ${selected ? 'selected' : ''}`} onClick={onClick}>
             { children }
         </div>
     );

@@ -1,9 +1,0 @@
-.properties-list {
-    list-style: none;
-}
-.properties-list li {
-    border-bottom: 1px solid grey;
-}
-.properties-list li:last-child {
-    border-bottom: none;
-}

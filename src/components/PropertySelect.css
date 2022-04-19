@@ -2,29 +2,21 @@
 .header-wrapper {
     display: flex;
 }
-.selectable-property,
 .selectable-property-header {
     flex-grow: 100;
 }
 .selectable-property-header,
 .property-weight-header {
-    padding: .5rem 1rem;
+    padding: var(--space-unit-reduced) var(--space-unit-default);
 }
-.selectable-property,
 .property-weight {
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    margin: 1rem 0 1rem 1rem;
-    background: #f5f5f5;
+    border-bottom: var(--border-width) solid var(--border-color-item);
+    padding: var(--space-unit-reduced) var(--space-unit-default);
+    border-radius: var(--space-unit-reduced);
+    margin: var(--space-unit-default) 0 var(--space-unit-default) var(--space-unit-default);
+    background: var(--background-default);
     cursor: pointer;
 }
 .property-weight input {
     border: none;
-}
-.selectable-property.property-selected {
-    background: lightgreen;
-}
-.property-select .property-weight,
-.property-select .selectable-property {
-    border-bottom: 1px solid grey;
 }
