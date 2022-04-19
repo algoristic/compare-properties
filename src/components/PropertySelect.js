@@ -6,7 +6,7 @@ import './PropertySelect.css'
 const PropertyWeight = ({ property, handleChange }) => {
     return (
         <div className='property-weight'>
-            <input type='number' min='1' max='10'  value={property.weight} onChange={handleChange} />
+            <input type='number' min='1' max='10' size='10' value={property.weight} onChange={handleChange} />
         </div>
     );
 };

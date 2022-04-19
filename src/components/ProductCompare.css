@@ -22,13 +22,22 @@ tfoot tr {
 }
 .product {
     margin-bottom: calc(var(--space-unit-default) * 2);
+    border-style: solid;
+    border-width: var(--space-unit-reduced);
+    border-color: var(--yellow);
+}
+.product:first-child {
+    border-color: var(--green);
+}
+.product:last-child {
+    border-color: var(--red);
 }
 .property.property-is-max {
     font-weight: bold;
-    color: green;
+    color: var(--green);
 }
 .property.property-is-min {
-    color: red;
+    color: var(--light-red);
 }
 .product .product-name {
     text-align: left;

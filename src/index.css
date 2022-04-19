@@ -1,8 +1,13 @@
 :root {
     --light-grey: #f5f5f5;
     --grey: lightgrey;
+    --light-green: lightgreen;
+    --green: green;
+    --yellow: #ffff99;
+    --light-red: red;
+    --red: darkred;
     --background-default: var(--light-grey);
-    --background-selected: lightgreen;
+    --background-selected: var(--light-green);
     --border-width: 1px;
     --border-color-item: grey;
     --border-color-panel: black;

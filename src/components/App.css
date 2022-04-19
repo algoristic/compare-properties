@@ -1,7 +1,16 @@
 .app .select-comparables {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 .app .select-comparables>* {
     flex-grow: 1;
+}
+@media (min-width: 1280px) {
+    .app .select-comparables {
+        flex-direction: row;
+    }
+    .app .select-comparables>*:first-child {
+        border-right: var(--border-width) solid var(--border-color-panel);
+    }
 }
