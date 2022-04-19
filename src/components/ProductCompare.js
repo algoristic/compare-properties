@@ -1,7 +1,12 @@
 import './ProductCompare.css'
 
+// FIXME: Dieser Block müsste eigentlich im Sinne von Clean Code refactored werden...
+// (1) Merke: Kommentare ersetzen keinen guten Code
+// (2) Keine kontextuelle Trennung von Anwendungs- und Oberflächenlogik vorhanden :(
 const buildCompareList = (products, properties) => {
     const productsWrapper = {};
+    // bringe Produkte Form eines assioziativen Arrays, damit sowohl Produkt als auch Eigenschaft einfach über eine ID angesprochen werden können
+    // (anstatt mehrfach über eine Liste iterieren zu müssen)
     products.filter(product => product.selected).forEach(product => {
         const props = {};
         product.properties.forEach(property => {
@@ -20,34 +25,45 @@ const buildCompareList = (products, properties) => {
         const { id } = property;
         if(property.visible && property.selected) {
             let allValues = Object.values(productsWrapper).map(product => {
+                // wenn das Produkt die aktuelle Property nicht hat, rechne mit Nutzwert 0
                 let productProperty = product.props[id];
                 return productProperty ? productProperty.value : 0;
             });
+            // eliminiere doppelte Werte
             allValues = [...new Set(allValues)];
-            allValues.sort();
+            // korrekte numerische Sortierung (nicht nach String-Länge)
+            allValues.sort((a, b) => a - b);
             Object.values(productsWrapper).forEach(product => {
                 const productProperty = product.props[id];
                 let value = productProperty ? productProperty.value : 0;
+                // Position im sortierten Arrays aller Vergleichswerte = Basis-Nutzwert
                 let fullfillmentLevel = allValues.indexOf(value);
+                // vergebe kontextuelle CSS-Klassen je Eigenschaft
+                // (am besten oder am schlechtesten?)
                 const isMin = (fullfillmentLevel === 0);
                 const isMax = (fullfillmentLevel === (allValues.length - 1));
-                if(!fullfillmentLevel) {
-                    fullfillmentLevel = 1;
-                } else {
-                    fullfillmentLevel++;
-                }
-                let calculatedValue = (fullfillmentLevel * property.weight);
-                productsWrapper[product.id].sum += calculatedValue;
                 let contextualClass = undefined;
                 if(isMin) {
                     contextualClass = 'property-is-min';
                 }
                 if(isMax) {
-                    contextualClass = ' property-is-max';
+                    contextualClass = 'property-is-max';
                 }
+                // Nutzwertanalyse ist nicht 0-basiert
+                // => geringster Erüllungsgrad = 1, etc.
+                if(!fullfillmentLevel) {
+                    fullfillmentLevel = 1;
+                } else {
+                    fullfillmentLevel++;
+                }
+                // Ermittelter Nutzwert wird auf Basis der Nutzerauswahl gewichtet
+                let calculatedValue = (fullfillmentLevel * property.weight);
+                // Summe des Produktes ergibt sich aus der Summe aller Nutzwerte
+                productsWrapper[product.id].sum += calculatedValue;
+                // versehe die Produkt-Properties mit allen kontextuellen Informationen
                 productsWrapper[product.id].props[id] = {
                     value: value,
-                    fullfillment: fullfillmentLevel,
+                    fullfillment: calculatedValue,
                     visible: true,
                     name: property.name,
                     unit: property.unit,
@@ -57,7 +73,9 @@ const buildCompareList = (products, properties) => {
         }
     });
     const resultList = [];
+    // Bringe die Produkte wieder in Listenform, damit einfach iteriert werden kann
     Object.values(productsWrapper).forEach(product => resultList.push(product));
+    // Sortiere nach Summe (absteigend)
     resultList.sort((a, b) => b.sum - a.sum);
     return resultList;
 };
