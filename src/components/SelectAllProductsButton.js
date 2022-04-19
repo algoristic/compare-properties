@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import './SelectAllButton.css'
+import './SelectAllProductsButton.css'
 
 class SelectAllButton extends Component {
     constructor(props) {

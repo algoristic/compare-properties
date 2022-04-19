@@ -1,8 +1,6 @@
-.property-select {
-    border: 1px solid black;
-    border-right: 0;
-    border-top: 0;
-    padding: .5rem 1rem;
+.property-wrapper,
+.header-wrapper {
+    display: flex;
 }
 .selectable-property,
 .selectable-property-header {
@@ -20,22 +18,13 @@
     background: #f5f5f5;
     cursor: pointer;
 }
+.property-weight input {
+    border: none;
+}
 .selectable-property.property-selected {
     background: lightgreen;
 }
 .property-select .property-weight,
 .property-select .selectable-property {
     border-bottom: 1px solid grey;
-}
-.property-select-header {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.property-wrapper,
-.header-wrapper {
-    display: flex;
-}
-.property-weight input {
-    border: none;
 }

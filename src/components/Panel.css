@@ -1,0 +1,9 @@
+.panel {
+    border-bottom: 1px solid black;
+    padding: .5rem 1rem;
+}
+.panel .panel-header {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}

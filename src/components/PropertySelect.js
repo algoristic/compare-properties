@@ -1,3 +1,5 @@
+import Panel from './Panel'
+
 import './PropertySelect.css'
 
 const Property = ({ property, toggle, changeWeight }) => {
@@ -19,18 +21,15 @@ const Property = ({ property, toggle, changeWeight }) => {
 
 const PropertySelect = ({ properties, toggle, changeWeight }) => {
     return (
-        <div className='property-select'>
-            <div className='property-select-header'>
-                <h1>Select Properties</h1>
-            </div>
+        <Panel header='Eigenschaften auswählen'>
             <div className='header-wrapper'>
-                <h4 className='selectable-property-header'>Property name</h4>
-                <h4 className='property-weight-header'>Property weight</h4>
+                <h4 className='selectable-property-header'>Eigenschaft</h4>
+                <h4 className='property-weight-header'>Gewichtung</h4>
             </div>
-        {
-            properties.filter(property => property.visible).map(property => <Property property={property} toggle={() => toggle(property)} changeWeight={changeWeight} />)
-        }
-        </div>
+            {
+                properties.filter(property => property.visible).map(property => <Property property={property} toggle={() => toggle(property)} changeWeight={changeWeight} />)
+            }
+        </Panel>
     );
 };
 
