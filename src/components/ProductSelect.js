@@ -9,7 +9,7 @@ import './ProductSelect.css'
 const ProductImage = ({ product }) => {
     return (
         <div className='product-image'>
-            <img src={`https://via.placeholder.com/100x100?text=${product.name}`} />
+            <img alt={product.name} src={`https://via.placeholder.com/100x100?text=${product.name}`} />
         </div>
     );
 };
