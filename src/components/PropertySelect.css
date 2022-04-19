@@ -23,6 +23,7 @@
 .selectable-property.property-selected {
     background: lightgreen;
 }
+.property-select .property-weight,
 .property-select .selectable-property {
     border-bottom: 1px solid grey;
 }
@@ -34,4 +35,7 @@
 .property-wrapper,
 .header-wrapper {
     display: flex;
+}
+.property-weight input {
+    border: none;
 }

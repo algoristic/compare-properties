@@ -1,3 +1,5 @@
+import './Image.css'
+
 const Image = ({ product }) => {
     return (
         <div className='product-image'>
