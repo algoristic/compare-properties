@@ -1,5 +1,38 @@
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: var(--space-unit-reduced) var(--space-unit-default);
+}
+tr:nth-child(2n) {
+    background: var(--light-grey);
+}
+thead tr {
+    background: black;
+    color: white;
+}
+tfoot tr {
+    background: var(--grey);
+}
 .product-compare {
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.product {
+    margin-bottom: calc(var(--space-unit-default) * 2);
+}
+.property.property-is-max {
+    font-weight: bold;
+    color: green;
+}
+.property.property-is-min {
+    color: red;
+}
+.product .product-name {
+    text-align: left;
+}
+.t-align-right {
+    text-align: right;
 }

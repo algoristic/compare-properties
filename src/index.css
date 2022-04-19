@@ -1,5 +1,7 @@
 :root {
-    --background-default: #f5f5f5;
+    --light-grey: #f5f5f5;
+    --grey: lightgrey;
+    --background-default: var(--light-grey);
     --background-selected: lightgreen;
     --border-width: 1px;
     --border-color-item: grey;
