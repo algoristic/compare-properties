@@ -5,7 +5,20 @@
 .select-list .selectable-product {
     border-bottom: var(--border-width) solid var(--border-color-item);
 }
+.product-name {
+    white-space: nowrap;
+    padding: 0 var(--space-unit-default);
+}
 .product-image img {
     border-radius: var(--space-unit-reduced);
     border: var(--border-width) solid var(--border-color-item);
+    width: 100%;
+    height: auto;
+}
+.properties-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+.list-property {
+    white-space: nowrap;
 }
