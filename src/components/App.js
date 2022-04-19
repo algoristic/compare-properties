@@ -1,4 +1,6 @@
 import { Component } from 'react'
+
+import Divider from './Divider'
 import ProductSelect from './ProductSelect'
 import ProductCompare from './ProductCompare'
 import PropertySelect from './PropertySelect'
@@ -8,12 +10,14 @@ import allProperties from '../assets/property.config.json'
 
 import './App.css';
 
+// main app logic
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             products: allProducts.products.map(product => {
                 product.selected = false;
+                product.matches = (_product) => product.id === _product.id;
                 return product;
             }),
             properties: Object.keys(allProperties.properties).map(id => {
@@ -21,9 +25,12 @@ class App extends Component {
                 property.id = id;
                 property.visible = false;
                 property.selected = true;
+                property.matches = (_property) => property.id === _property.id;
                 return property;
             })
         };
+        this.changeProductValue = this.changeProductValue.bind(this);
+        this.changePropertyValue = this.changePropertyValue.bind(this);
         this.toggleProduct = this.toggleProduct.bind(this);
         this.toggleProperty = this.toggleProperty.bind(this);
         this.toggleAllProducts = this.toggleAllProducts.bind(this);
@@ -31,52 +38,53 @@ class App extends Component {
         this.changePropertyWeight = this.changePropertyWeight.bind(this);
     }
 
-    toggleProduct(toggledProduct) {
+    changeProductValue(fn) {
         let { products } = this.state;
-        products = products.map(product => {
-            if(product.id === toggledProduct.id) {
+        products = products.map(product => fn(product));
+        this.setState({
+            products: products,
+            properties: this.updateProperties(products)
+        });
+    }
+
+    changePropertyValue(fn) {
+        let { properties } = this.state;
+        properties = properties.map(property => fn(property));
+        this.setState({ properties: properties });
+    }
+
+    toggleProduct(toggledProduct) {
+        this.changeProductValue(product => {
+            if(product.matches(toggledProduct)) {
                 product.selected = (!product.selected);
             }
             return product;
         });
-        this.setState({
-            products: products,
-            properties: this.updateProperties(products)
-        });
     }
 
     toggleAllProducts(state) {
-        let { products } = this.state;
-        products = products.map(product => {
+        this.changeProductValue(product => {
             product.selected = state;
             return product;
-        });
-        this.setState({
-            products: products,
-            properties: this.updateProperties(products)
         });
     }
 
     toggleProperty(toggledProperty) {
-        let { properties } = this.state;
-        properties = properties.map(property => {
-            if(property.id === toggledProperty.id) {
+        this.changePropertyValue(property => {
+            if(property.matches(toggledProperty)) {
                 property.selected = (!property.selected);
             }
             return property;
         });
-        this.setState({ properties: properties });
     }
 
     changePropertyWeight(toggledProperty, value) {
-        let { properties } = this.state;
-        properties = properties.map(property => {
-            if(property.id === toggledProperty.id) {
+        this.changePropertyValue(property => {
+            if(property.matches(toggledProperty)) {
                 property.weight = value;
             }
             return property;
         });
-        this.setState({ properties: properties });
     }
 
     updateProperties(products) {
@@ -107,8 +115,10 @@ class App extends Component {
                     <ProductSelect products={products} toggle={this.toggleProduct} toggleAll={this.toggleAllProducts} />
                     <PropertySelect properties={properties} toggle={this.toggleProperty} changeWeight={this.changePropertyWeight} />
                 </div>
-                <div className='divider' onClick={() => window.scrollTo(0, document.body.scrollHeight)}>⇓</div>
-                <ProductCompare products={products} properties={properties} />
+                <Divider icon='⇓' />
+                <div className='view-comparison'>
+                    <ProductCompare products={products} properties={properties} />
+                </div>
             </div>
         );
     }
